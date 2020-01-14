@@ -29,3 +29,6 @@
 
 #include "Hazel/Renderer/OrthographicCamera.h"
 // -----------------------------------
+
+#include "Hazel/Math/MathUtility.h"
+#include "Hazel/Math/Vector2.h"

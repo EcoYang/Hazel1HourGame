@@ -2,13 +2,14 @@
 #include <Hazel/Core/EntryPoint.h>
 
 #include "GameLayer.h"
+#include "MappingEditor/MappingEditorLayer.h"
 
 class Sandbox : public Hazel::Application
 {
 public:
 	Sandbox()
 	{
-		PushLayer(new GameLayer());
+		PushLayer(new MappingEditorLayer());
 	}
 
 	~Sandbox()
