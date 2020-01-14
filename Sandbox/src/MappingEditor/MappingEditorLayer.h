@@ -26,5 +26,7 @@ private:
 	ImFont* m_Font;
 
 	float m_Time = 0.0f;
+
+	Hazel::Scope<class MappingEditorLevel> m_MappingEditorLevel;
 };
 

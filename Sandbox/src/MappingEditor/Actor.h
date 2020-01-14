@@ -8,18 +8,25 @@ public:
 	Actor(float PosX, float PosY); 
 	virtual ~Actor() = default;
 
+	void Init();
 	void SetTexture(const std::string & TexturePath);
-	void LoadAssets();
 
 	virtual void Update(Hazel::Timestep ts); 
+	void OnRender();
+
 	void OnImGuiRender();
 
-	virtual std::string ToString() const;
+	void Reset();
 
+	virtual std::string ToString() const;
+	 
 	const glm::vec2& GetPosition() const { return m_Position; }
+	const glm::vec2& GetScale() const { return m_Scale; }
 
 private:
 	glm::vec2 m_Position;
+	glm::vec2 m_Scale;
+
 	unsigned int m_Index;
 	std::string m_Name;
 

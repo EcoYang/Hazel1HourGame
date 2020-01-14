@@ -5,6 +5,9 @@
 class MappingEditorLevel
 {
 public:
+	MappingEditorLevel();
+	virtual ~MappingEditorLevel();
+
 	void Init();
 
 	void OnUpdate(Hazel::Timestep ts);

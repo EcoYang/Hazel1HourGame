@@ -1,5 +1,7 @@
 #include "MappingEditorLevel.h"
 
+#include "Actor.h"
+
 #include <glm/gtc/matrix_transform.hpp>
 
 using namespace Hazel;
@@ -48,22 +50,46 @@ static glm::vec4 HSVtoRGB(const glm::vec3& hsv) {
 	return { (Rs + m), (Gs + m), (Bs + m), 1.0f };
 }
 
+MappingEditorLevel::MappingEditorLevel()
+{
+}
+
+MappingEditorLevel::~MappingEditorLevel()
+{
+}
+
 void MappingEditorLevel::Init()
 {
 }
 
 void MappingEditorLevel::OnUpdate(Hazel::Timestep ts)
 {
+	for (Actor * ActorPtr : m_ActorVector) 
+	{
+		ActorPtr->Update(ts);
+	}
 }
 
 void MappingEditorLevel::OnRender()
 {
+	for (Actor* ActorPtr : m_ActorVector)
+	{
+		ActorPtr->OnRender();
+	}
 }
 
 void MappingEditorLevel::OnImGuiRender()
 {
+	for (Actor* ActorPtr : m_ActorVector)
+	{
+		ActorPtr->OnImGuiRender();
+	}
 }
 
 void MappingEditorLevel::Reset()
 {
+	for (Actor* ActorPtr : m_ActorVector)
+	{
+		ActorPtr->Reset();
+	}
 }

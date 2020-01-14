@@ -1,5 +1,7 @@
 #include "MappingEditorLayer.h"
 
+#include "MappingEditorLevel.h"
+
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
@@ -20,6 +22,8 @@ void MappingEditorLayer::OnAttach()
 {
 	ImGuiIO io = ImGui::GetIO();
 	m_Font = io.Fonts->AddFontFromFileTTF("assets/OpenSans-Regular.ttf", 120.0f);
+
+	m_MappingEditorLevel = CreateScope<MappingEditorLevel>();
 }
 
 void MappingEditorLayer::OnDetach()
@@ -29,19 +33,20 @@ void MappingEditorLayer::OnDetach()
 void MappingEditorLayer::OnUpdate(Hazel::Timestep ts)
 {
 	m_Time += ts;
+	m_MappingEditorLevel->OnUpdate(ts);
 
 	// Render
 	Hazel::RenderCommand::SetClearColor({ 0.0f, 0.0f, 0.0f, 1 });
 	Hazel::RenderCommand::Clear();
 
 	Hazel::Renderer2D::BeginScene(*m_Camera); 
-	
-
+	m_MappingEditorLevel->OnRender();
 	Hazel::Renderer2D::EndScene();
 }
 
 void MappingEditorLayer::OnImGuiRender()
 {
+	m_MappingEditorLevel->OnImGuiRender();
 }
 
 void MappingEditorLayer::OnEvent(Hazel::Event& e)
