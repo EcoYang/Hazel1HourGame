@@ -6,6 +6,15 @@ using namespace Hazel;
 
 static int s_CurrentIndex = 0;
 
+Actor::Actor(const glm::vec2& Position, const glm::vec2& Scale)
+	: m_Position(Position),
+	m_Index(++s_CurrentIndex),
+	m_Name("Actor " + std::to_string(m_Index)),
+	m_Scale(Scale)
+{
+	Init();
+}
+
 Actor::Actor(const glm::vec2 & Position)
 	: m_Position(Position),
 	m_Index(++s_CurrentIndex),
@@ -32,7 +41,6 @@ Actor::~Actor()
 void Actor::Init()
 {
 	m_Index = ++s_CurrentIndex;
-	SetTexture("assets/textures/ChernoLogo.png");
 }
 
 void Actor::SetTexture(const std::string& TexturePath)

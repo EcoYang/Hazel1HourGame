@@ -6,11 +6,11 @@ class MappingEditorLevel;
 class Actor
 {
 public:
+	Actor(const glm::vec2& Position, const glm::vec2 & Scale);
 	Actor(const glm::vec2 & Position);
 	Actor(float PosX, float PosY); 
 	virtual ~Actor();
-
-
+	
 	virtual void SetTexture(const std::string & TexturePath);
 
 	virtual void Update(Hazel::Timestep ts); 
@@ -22,14 +22,14 @@ public:
 
 	virtual std::string ToString() const;
 	
-	virtual void Destroy();
-	
 public:
 	const glm::vec2& GetPosition() const { return m_Position; }
 	const glm::vec2& GetScale() const { return m_Scale; }
 
 protected:
 	virtual void Init();
+
+	virtual void Destroy();
 
 private:
 	glm::vec2 m_Position;

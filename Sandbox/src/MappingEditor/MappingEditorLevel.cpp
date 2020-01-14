@@ -105,7 +105,7 @@ void MappingEditorLevel::Reset()
 
 void MappingEditorLevel::SpawnActor(const glm::vec2& SpawnPosition, const glm::vec2& SpawnScale)
 {
-	Actor* NewActor = new Actor(SpawnPosition);
+	Actor* NewActor = new Actor(SpawnPosition, SpawnScale);
 	m_ActorVector.push_back(NewActor);
 }
 
