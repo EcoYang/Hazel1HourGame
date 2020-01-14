@@ -2,6 +2,8 @@
 
 #include "Hazel.h"
 
+class Actor;
+
 class MappingEditorLevel
 {
 public:
@@ -18,9 +20,10 @@ public:
 
 public:
 	void SpawnActor(const glm::vec2 & SpawnPosition, const glm::vec2 & SpawnScale);
+	void DestroyActor(Actor * ActorPtr);
 
 private:
-	std::vector<class Actor*> m_ActorVector;
+	std::vector<Actor*> m_ActorVector;
 
 	static MappingEditorLevel * s_Instance;
 };

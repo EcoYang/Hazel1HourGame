@@ -69,7 +69,7 @@ void Actor::Reset()
 std::string Actor::ToString() const
 {
 	std::stringstream ss;
-	ss << "Name : " << m_Name << " Position : " << " x :"<< m_Position.x << " y : " << m_Position.y;
+	ss << "Name : " << m_Name;
 
 	return ss.str();
 }
