@@ -25,8 +25,6 @@ private:
 	Hazel::Scope<Hazel::OrthographicCamera> m_Camera; 
 	ImFont* m_Font;
 
-	std::vector<class Actor*> m_ActorVector;
-
 	float m_Time = 0.0f;
 };
 

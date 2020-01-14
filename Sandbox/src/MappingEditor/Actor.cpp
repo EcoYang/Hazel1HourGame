@@ -1,5 +1,7 @@
 #include "Actor.h"
- 
+
+using namespace Hazel;
+
 static int s_CurrentIndex = 0;
 
 Actor::Actor(const glm::vec2 & Position)
@@ -16,6 +18,11 @@ Actor::Actor(float PosX, float PosY)
 	m_Name("Actor " + std::to_string(m_Index))
 {
 
+}
+
+void Actor::SetTexture(const std::string& TexturePath)
+{
+	m_Texture = Texture2D::Create(TexturePath);
 }
 
 void Actor::LoadAssets()

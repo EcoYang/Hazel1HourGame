@@ -8,6 +8,7 @@ public:
 	Actor(float PosX, float PosY); 
 	virtual ~Actor() = default;
 
+	void SetTexture(const std::string & TexturePath);
 	void LoadAssets();
 
 	virtual void Update(Hazel::Timestep ts); 
@@ -22,6 +23,7 @@ private:
 	unsigned int m_Index;
 	std::string m_Name;
 
+	Hazel::Ref<Hazel::Texture2D> m_Texture; 
 };
 
 inline std::ostream& operator<<(std::ostream& os, const Actor* ActPtr)
