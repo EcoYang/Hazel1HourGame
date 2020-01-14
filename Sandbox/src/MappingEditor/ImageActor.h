@@ -10,5 +10,11 @@ public:
 	virtual void OnRender() override;
 
 	virtual void OnImGuiRender() override;
+
+protected:
+	std::string OpenFileName(wchar_t* Filter = L"Image files (*.jpg, *.png) | *.jpg; *.png", HWND Owner = NULL);
+	
+private:
+	std::string m_FilePath;
 };
 

@@ -19,6 +19,8 @@ public:
 	bool OnMouseButtonPressed(Hazel::MouseButtonPressedEvent& e);
 	bool OnWindowResize(Hazel::WindowResizeEvent& e);
 
+	void DrawRect(int x1, int y1, int x2, int y2);
+
 private:
 	void CreateCamera(uint32_t width, uint32_t height);
 

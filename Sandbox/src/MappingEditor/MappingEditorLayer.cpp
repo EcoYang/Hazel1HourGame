@@ -4,7 +4,7 @@
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-
+ 
 using namespace Hazel;
 
 MappingEditorLayer::MappingEditorLayer()
@@ -21,7 +21,7 @@ MappingEditorLayer::~MappingEditorLayer()
 void MappingEditorLayer::OnAttach()
 {
 	ImGuiIO io = ImGui::GetIO();
-	m_Font = io.Fonts->AddFontFromFileTTF("assets/OpenSans-Regular.ttf", 120.0f);
+	m_Font = io.Fonts->AddFontFromFileTTF("assets/OpenSans-Regular.ttf", 24.f);
 
 	m_MappingEditorLevel = CreateScope<MappingEditorLevel>();
 	m_MappingEditorLevel->Init();
@@ -67,6 +67,8 @@ bool MappingEditorLayer::OnWindowResize(Hazel::WindowResizeEvent& e)
 	CreateCamera(e.GetWidth(), e.GetHeight());
 	return false;
 }
+
+
 
 void MappingEditorLayer::CreateCamera(uint32_t width, uint32_t height)
 {
