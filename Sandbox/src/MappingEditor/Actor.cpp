@@ -5,7 +5,6 @@
 using namespace Hazel;
 
 static int s_CurrentIndex = 0;
-MappingEditorLevel* Actor::s_Level = nullptr;
 
 Actor::Actor(const glm::vec2 & Position)
 	: m_Position(Position),
@@ -77,17 +76,4 @@ std::string Actor::ToString() const
 
 void Actor::Destroy()
 {
-	s_Level = nullptr;
 }
-
-void Actor::SetLevel(MappingEditorLevel * Level)
-{
-	if (s_Level != nullptr) 
-	{
-		return; 
-	}
-
-	s_Level = Level;
-}
-
- 

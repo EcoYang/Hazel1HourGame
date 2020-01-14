@@ -22,4 +22,5 @@ public:
 private:
 	std::vector<class Actor*> m_ActorVector;
 
+	static MappingEditorLevel * s_Instance;
 };

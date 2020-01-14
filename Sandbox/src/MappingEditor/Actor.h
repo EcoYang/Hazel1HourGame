@@ -10,23 +10,26 @@ public:
 	Actor(float PosX, float PosY); 
 	virtual ~Actor();
 
-	void Init();
-	void SetTexture(const std::string & TexturePath);
+
+	virtual void SetTexture(const std::string & TexturePath);
 
 	virtual void Update(Hazel::Timestep ts); 
-	void OnRender();
+	virtual void OnRender();
 
-	void OnImGuiRender();
+	virtual void OnImGuiRender();
 
-	void Reset();
+	virtual void Reset();
 
 	virtual std::string ToString() const;
-	 
+	
+	virtual void Destroy();
+	
+public:
 	const glm::vec2& GetPosition() const { return m_Position; }
 	const glm::vec2& GetScale() const { return m_Scale; }
 
-	void Destroy();
-	void SetLevel(MappingEditorLevel * Level);
+protected:
+	virtual void Init();
 
 private:
 	glm::vec2 m_Position;
@@ -36,8 +39,6 @@ private:
 	std::string m_Name;
 
 	Hazel::Ref<Hazel::Texture2D> m_Texture; 
-
-	static MappingEditorLevel * s_Level;
 };
 
 inline std::ostream& operator<<(std::ostream& os, const Actor* ActPtr)

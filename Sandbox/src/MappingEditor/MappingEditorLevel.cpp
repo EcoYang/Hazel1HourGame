@@ -6,6 +6,8 @@
 
 using namespace Hazel;
 
+MappingEditorLevel * MappingEditorLevel::s_Instance = nullptr;
+
 static glm::vec4 HSVtoRGB(const glm::vec3& hsv) {
 	int H = (int)(hsv.x * 360.0f);
 	double S = hsv.y;
@@ -52,15 +54,21 @@ static glm::vec4 HSVtoRGB(const glm::vec3& hsv) {
 
 MappingEditorLevel::MappingEditorLevel()
 {
+	if(s_Instance)
+	{
+		HZ_ERROR("Instance Existed on Mapping Editor Level");
+	}
+
+	s_Instance = this;
 }
 
 MappingEditorLevel::~MappingEditorLevel()
 {
+	s_Instance = nullptr;
 }
 
 void MappingEditorLevel::Init()
 {
-
 }
 
 void MappingEditorLevel::OnUpdate(Hazel::Timestep ts)
