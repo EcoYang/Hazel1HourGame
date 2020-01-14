@@ -18,12 +18,15 @@ public:
 	void OnImGuiRender(); 
 	void Reset();
 
-public:
-	void SpawnActor(const glm::vec2 & SpawnPosition, const glm::vec2 & SpawnScale);
+public: 
+	Actor * SpawnActor(const char * ActorType, const glm::vec2& SpawnPosition, const glm::vec2& SpawnScale);
+	Actor* SpawnActor(const char* ActorType, const glm::vec2& SpawnPosition);
+	Actor* SpawnActor(const char* ActorType);
 	void DestroyActor(Actor * ActorPtr);
 
 private:
 	std::vector<Actor*> m_ActorVector;
 
 	static MappingEditorLevel * s_Instance;
+
 };

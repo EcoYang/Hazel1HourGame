@@ -1,6 +1,7 @@
 #include "MappingEditorLevel.h"
 
-#include "Actor.h"
+#include "ImageActor.h"
+#include "FactoryActor.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 
@@ -68,7 +69,8 @@ MappingEditorLevel::~MappingEditorLevel()
 }
 
 void MappingEditorLevel::Init()
-{
+{ 
+	SpawnActor("ImageActor");
 }
 
 void MappingEditorLevel::OnUpdate(Hazel::Timestep ts)
@@ -85,6 +87,12 @@ void MappingEditorLevel::OnRender()
 	{
 		ActorPtr->OnRender();
 	}
+
+	Renderer2D::DrawQuad({ 1.0f, 1.0f }, { 0.8f, 0.8f }, { 1.f , 0.f , 0.f , 1.0f });
+	Renderer2D::DrawQuad({ -1.0f, -1.0f }, { 0.8f, 0.8f }, { 0.0f, 1.0f, 0.0f, 1.0f });
+	Renderer2D::DrawQuad({ -1.0f, 1.0f }, { 0.8f, 0.8f }, { 0.0f, 0.f, 1.0f, 1.0f });
+	Renderer2D::DrawQuad({ 1.0f, -1.0f }, { 0.8f, 0.8f }, { 0.0f, 1.0f, 1.0f, 1.0f });
+
 }
 
 void MappingEditorLevel::OnImGuiRender()
@@ -103,12 +111,24 @@ void MappingEditorLevel::Reset()
 	}
 }
 
-void MappingEditorLevel::SpawnActor(const glm::vec2& SpawnPosition, const glm::vec2& SpawnScale)
+Actor* MappingEditorLevel::SpawnActor(const char* ActorType, const glm::vec2& SpawnPosition, const glm::vec2& SpawnScale)
 {
-	Actor* NewActor = new Actor(SpawnPosition, SpawnScale);
+	FactoryActor* FactoryActorPtr = FactoryActor::Get();
+	Actor* NewActor= FactoryActorPtr->BuildActor<Actor>(ActorType, SpawnPosition, SpawnScale);
 	m_ActorVector.push_back(NewActor);
+	return NewActor;
 }
 
+Actor* MappingEditorLevel::SpawnActor(const char* ActorType, const glm::vec2& SpawnPosition)
+{
+	return SpawnActor(ActorType, SpawnPosition, {1.f, 1.f});
+}
+
+Actor* MappingEditorLevel::SpawnActor(const char* ActorType)
+{
+	return SpawnActor(ActorType, {0.f,0.f});
+}
+ 
 void MappingEditorLevel::DestroyActor(Actor* ActorPtr)
 {
 	for (auto it = m_ActorVector.begin(); it != m_ActorVector.end(); ++it) 
