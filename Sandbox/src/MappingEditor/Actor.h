@@ -1,12 +1,14 @@
 #pragma once
 #include "Hazel.h"
 
+class MappingEditorLevel;
+
 class Actor
 {
 public:
 	Actor(const glm::vec2 & Position);
 	Actor(float PosX, float PosY); 
-	virtual ~Actor() = default;
+	virtual ~Actor();
 
 	void Init();
 	void SetTexture(const std::string & TexturePath);
@@ -23,6 +25,9 @@ public:
 	const glm::vec2& GetPosition() const { return m_Position; }
 	const glm::vec2& GetScale() const { return m_Scale; }
 
+	void Destroy();
+	void SetLevel(MappingEditorLevel * Level);
+
 private:
 	glm::vec2 m_Position;
 	glm::vec2 m_Scale;
@@ -31,6 +36,8 @@ private:
 	std::string m_Name;
 
 	Hazel::Ref<Hazel::Texture2D> m_Texture; 
+
+	static MappingEditorLevel * s_Level;
 };
 
 inline std::ostream& operator<<(std::ostream& os, const Actor* ActPtr)

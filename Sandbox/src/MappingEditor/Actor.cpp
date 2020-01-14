@@ -1,8 +1,11 @@
 #include "Actor.h"
 
+#include "MappingEditorLevel.h"
+
 using namespace Hazel;
 
 static int s_CurrentIndex = 0;
+MappingEditorLevel* Actor::s_Level = nullptr;
 
 Actor::Actor(const glm::vec2 & Position)
 	: m_Position(Position),
@@ -20,6 +23,11 @@ Actor::Actor(float PosX, float PosY)
 	m_Scale(1.f, 1.f)
 {
 	Init();
+}
+
+Actor::~Actor()
+{
+	Destroy();
 }
 
 void Actor::Init()
@@ -56,6 +64,7 @@ void Actor::OnImGuiRender()
 
 void Actor::Reset()
 {
+
 }
 
 std::string Actor::ToString() const
@@ -64,6 +73,21 @@ std::string Actor::ToString() const
 	ss << "Name : " << m_Name << " Position : " << " x :"<< m_Position.x << " y : " << m_Position.y;
 
 	return ss.str();
+}
+
+void Actor::Destroy()
+{
+	s_Level = nullptr;
+}
+
+void Actor::SetLevel(MappingEditorLevel * Level)
+{
+	if (s_Level != nullptr) 
+	{
+		return; 
+	}
+
+	s_Level = Level;
 }
 
  

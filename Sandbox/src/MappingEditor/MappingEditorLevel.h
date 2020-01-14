@@ -16,6 +16,9 @@ public:
 	void OnImGuiRender(); 
 	void Reset();
 
+public:
+	void SpawnActor(const glm::vec2 & SpawnPosition, const glm::vec2 & SpawnScale);
+
 private:
 	std::vector<class Actor*> m_ActorVector;
 
