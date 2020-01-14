@@ -24,6 +24,7 @@ void MappingEditorLayer::OnAttach()
 	m_Font = io.Fonts->AddFontFromFileTTF("assets/OpenSans-Regular.ttf", 120.0f);
 
 	m_MappingEditorLevel = CreateScope<MappingEditorLevel>();
+	m_MappingEditorLevel->Init();
 }
 
 void MappingEditorLayer::OnDetach()

@@ -60,6 +60,8 @@ MappingEditorLevel::~MappingEditorLevel()
 
 void MappingEditorLevel::Init()
 {
+	Actor * NewActor = new Actor({0.f , 0.f});
+	m_ActorVector.push_back(NewActor);
 }
 
 void MappingEditorLevel::OnUpdate(Hazel::Timestep ts)

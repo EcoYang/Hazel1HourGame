@@ -18,6 +18,7 @@ public:
 	void OnEvent(Hazel::Event& e) override;
 	bool OnMouseButtonPressed(Hazel::MouseButtonPressedEvent& e);
 	bool OnWindowResize(Hazel::WindowResizeEvent& e);
+
 private:
 	void CreateCamera(uint32_t width, uint32_t height);
 
